@@ -1,0 +1,52 @@
+{
+ "produce": {
+  "1": {
+   "f": "Citron,Clémentine,Kiwi,Mandarine,Orange,Pamplemousse,Poire,Pomme",
+   "l": "Betterave,Carotte,Céleri-rave,Chou de Bruxelles,Chou-fleur,Endive,Épinard,Mâche,Navet,Panais,Poireau,Potiron,Salsifis,Topinambour"
+  },
+  "2": {
+   "f": "Citron,Clémentine,Kiwi,Orange,Pamplemousse,Poire,Pomme",
+   "l": "Betterave,Carotte,Céleri-rave,Chou,Endive,Épinard,Mâche,Navet,Panais,Poireau,Radis noir,Topinambour"
+  },
+  "3": {
+   "f": "Citron,Kiwi,Orange,Pamplemousse,Poire,Pomme",
+   "l": "Blette,Carotte,Chou-fleur,Endive,Épinard,Navet,Poireau,Radis,Asperge"
+  },
+  "4": {
+   "f": "Citron,Fraise,Kiwi,Pomme,Rhubarbe",
+   "l": "Artichaut,Asperge,Blette,Carotte nouvelle,Épinard,Fèves,Laitue,Oignon nouveau,Petits pois,Radis"
+  },
+  "5": {
+   "f": "Cerise,Fraise,Rhubarbe",
+   "l": "Artichaut,Asperge,Blette,Concombre,Courgette,Fèves,Laitue,Oignon nouveau,Petits pois,Pois gourmands,Radis"
+  },
+  "6": {
+   "f": "Abricot,Cerise,Fraise,Framboise,Melon,Pêche",
+   "l": "Artichaut,Aubergine,Concombre,Courgette,Fenouil,Haricot vert,Laitue,Petits pois,Poivron,Tomate"
+  },
+  "7": {
+   "f": "Abricot,Cassis,Framboise,Melon,Myrtille,Nectarine,Pastèque,Pêche,Prune",
+   "l": "Ail,Aubergine,Blette,Concombre,Courgette,Fenouil,Haricot vert,Maïs,Poivron,Tomate"
+  },
+  "8": {
+   "f": "Figue,Melon,Mirabelle,Mûre,Nectarine,Pastèque,Pêche,Prune,Raisin",
+   "l": "Aubergine,Brocoli,Concombre,Courgette,Fenouil,Haricot vert,Maïs,Poivron,Tomate"
+  },
+  "9": {
+   "f": "Figue,Melon,Mûre,Noisette,Poire,Pomme,Prune,Raisin",
+   "l": "Aubergine,Blette,Brocoli,Céleri,Courgette,Épinard,Fenouil,Haricot vert,Poivron,Potiron,Tomate"
+  },
+  "10": {
+   "f": "Châtaigne,Coing,Figue,Kaki,Noisette,Noix,Poire,Pomme,Raisin",
+   "l": "Betterave,Blette,Brocoli,Carotte,Céleri,Champignons,Chou,Courge butternut,Épinard,Fenouil,Panais,Poireau,Potimarron,Radis noir"
+  },
+  "11": {
+   "f": "Châtaigne,Clémentine,Coing,Kaki,Kiwi,Noix,Poire,Pomme",
+   "l": "Betterave,Blette,Brocoli,Carotte,Céleri-rave,Champignons,Chou de Bruxelles,Chou-fleur,Courge,Endive,Épinard,Fenouil,Mâche,Navet,Panais,Poireau,Topinambour"
+  },
+  "12": {
+   "f": "Châtaigne,Citron,Clémentine,Kiwi,Mandarine,Orange,Poire,Pomme",
+   "l": "Betterave,Carotte,Céleri-rave,Chou,Chou de Bruxelles,Courge,Endive,Épinard,Mâche,Navet,Panais,Poireau,Topinambour"
+  }
+ }
+}

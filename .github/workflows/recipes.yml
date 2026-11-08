@@ -1,0 +1,28 @@
+name: Recettes de saison
+
+# Reconstruit data/recipes.json (lu par l'app SEASON) quand la base de recettes change.
+on:
+  push:
+    branches: [main]
+    paths: ["scripts/recipes.py", "scripts/recipes_data.py", "scripts/produce.json", ".github/workflows/recipes.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  recettes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Construire recipes.json
+        run: python3 scripts/recipes.py scripts/produce.json data/recipes.json
+      - name: Publier
+        run: |
+          git config user.name season-bot
+          git config user.email season-bot@users.noreply.github.com
+          git add data/recipes.json
+          if git diff --cached --quiet; then echo "Rien de neuf"; exit 0; fi
+          git commit -qm "Recettes de saison mises à jour"
+          git pull -q --rebase origin main
+          git push -q origin main
