@@ -1,0 +1,50 @@
+name: Agenda de Montpellier
+
+# Chaque nuit, après la mise à jour de DATAtourisme sur data.gouv.fr (vers 5 h),
+# construit data/agenda.json lu par l'app SEASON.
+on:
+  schedule:
+    - cron: "17 4 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["scripts/agenda.py", ".github/workflows/agenda.yml"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: agenda
+  cancel-in-progress: false
+
+jobs:
+  agenda:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Télécharger les données ouvertes
+        run: |
+          UA="SEASON-Android/1.1 (usage personnel)"
+          URL=$(curl -sSL -A "$UA" "https://www.data.gouv.fr/api/1/datasets/5b598be088ee387c0c353714/" \
+            | jq -r '.resources[] | select(.title=="datatourisme-fma.csv") | .url' | head -1)
+          echo "Source : $URL"
+          curl -sSLf -A "$UA" --retry 3 "$URL" -o fma.csv
+          curl -sSLf -A "$UA" --retry 3 \
+            "https://data.education.gouv.fr/api/explore/v2.1/catalog/datasets/fr-en-calendrier-scolaire/records?where=location%3D%22Montpellier%22%20and%20end_date%3E%3D%22$(date -u +%Y-%m-%d)%22&order_by=start_date&limit=60" \
+            -o vacances.json || echo '{}' > vacances.json
+      - name: Construire agenda.json
+        run: |
+          mkdir -p data
+          python3 scripts/agenda.py fma.csv vacances.json data/agenda.json
+          # Garde-fou : ne jamais publier un agenda vide si la source a un souci
+          N=$(jq '.events | length' data/agenda.json)
+          if [ "$N" -lt 20 ]; then echo "::error::Seulement $N événements : agenda non publié"; exit 1; fi
+      - name: Publier
+        run: |
+          git config user.name season-bot
+          git config user.email season-bot@users.noreply.github.com
+          git add data/agenda.json
+          if git diff --cached --quiet; then echo "Rien de neuf"; exit 0; fi
+          git commit -qm "Agenda du $(date -u +%Y-%m-%d)"
+          git pull -q --rebase origin main
+          git push -q origin main
