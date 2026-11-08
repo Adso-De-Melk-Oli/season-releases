@@ -18,10 +18,19 @@ KCAL = dict(
     daurade=100, moule=85, seiche=80, sardine=140, maquereau=200, merlan=80, cabillaud=80, celeri=30, encornet=90, thon=130, stjacques=90,
     rouget=110, bar=100, anchois=130, sucre=400, amande=600, cerise=60, fraise=33, abricot=48, melon=34, noisette=640, feuilletee=400,
     chocolat=550, rhubarbe=20, pasteque=30, raisin=70, fromageblanc=75, kiwi=60,
+    soja=60, nuocmam=35, miso=200, tofu=120, galette_riz=360, semoule=360, navet=20, boulgour=350, tahini=600, pruneau=240, pain=270,
+    raisin_sec=300, mais=90, tortilla=300, arachide=600, chou=30, mascarpone=430, biscuit=400, framboise=45, prune=50, kaki=70,
 )
 # Aliments salés et leur remplacement en mode « sans sel ajouté » (None = la recette n'est pas proposée)
 SALTY = {"bouillon": "de bouillon de légumes sans sel ajouté", "olive": None, "saucisse": None, "confit": None, "roquefort": "de chèvre frais",
-         "parmesan": "de parmesan (facultatif, à doser)", "anchois": "d'anchois frais (ils ne sont pas salés)", "moutarde": "de moutarde à l'ancienne, peu salée"}
+         "parmesan": "de parmesan (facultatif, à doser)", "anchois": "d'anchois frais (ils ne sont pas salés)", "moutarde": "de moutarde à l'ancienne, peu salée",
+         "soja": "de jus de citron vert et gingembre râpé (à la place de la sauce soja)", "nuocmam": None, "miso": None}
+# Origine des recettes de la première base (les autres sont « France »)
+ORIGIN = {"curry-poischiches": ("inde", "Inde"), "tajine-poulet-citron": ("orient", "Maroc"), "orecchiette-brocoli": ("med", "Italie"),
+          "pates-printanieres": ("med", "Italie"), "risotto-champignons": ("med", "Italie"), "gaspacho": ("med", "Espagne"),
+          "boulettes-agneau": ("orient", "Orient"), "aubergines-yaourt": ("orient", "Orient"), "salade-tomate-peche": ("med", "Italie"),
+          "salade-radis-concombre": ("orient", "Grèce"), "agneau-coings": ("orient", "Maroc"), "anchois-marines": ("med", "Espagne"),
+          "poulet-tzatziki": ("orient", "Grèce"), "figues-roties": ("med", "Grèce"), "seiches-tomate": ("med", "Sète")}
 PORK = {"porc_filet", "porc_cote", "saucisse"}
 BEEF = {"boeuf_braise", "boeuf_maigre"}
 
@@ -77,6 +86,8 @@ def build(season_json, out):
             "pork": int(pork), "beef": int(beef), "sw": int(x["sweet"]), "ns": int(not salty_block), "salt": int(has_salt),
             "u": x["u"] + ([FISH_LABEL[x["f"]].capitalize()] if x["f"] else []), "kcal": round(kcal / x["parts"] / 10) * 10, "p": 2, "parts": x["parts"],
             "i": ing, "s": x["s"], **({"tip": x["tip"]} if x["tip"] else {}),
+            "c": ORIGIN.get(x["id"], (x["c"], None))[0] if x["c"] == "med" else x["c"],
+            "o": x["o"] or ORIGIN.get(x["id"], (None, "France"))[1],
         })
     ids = [r["id"] for r in recipes]; assert len(ids) == len(set(ids)), "identifiants en double"
     fish = {str(m): [FISH_LABEL[k] for k, ms in FISH.items() if m in ms] for m in range(1, 13)}
@@ -88,6 +99,7 @@ if __name__ == "__main__":
     rec = build(sys.argv[1], sys.argv[2])
     print(len(rec), "recettes")
     import collections
+    print(collections.Counter(x["c"] for x in rec))
     for m in range(1, 13):
         c = collections.Counter()
         for x in rec:

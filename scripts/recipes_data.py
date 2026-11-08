@@ -5,9 +5,10 @@ Les mois sont calculés à partir des produits de saison (champ u) et des poisso
 S = (None, "", "Sel, poivre", "sel", 0)   # retiré en mode « sans sel ajouté »
 
 R = []
-def r(id, n, k, t, reg, u, i, s, meat=None, f=None, sweet=False, tip=None, m=None, parts=2):
-    """parts : nombre de parts obtenues (pour les kcal par part) ; les quantités restent prévues pour 2 personnes."""
-    R.append(dict(id=id, n=n, k=k, t=t, reg=reg, u=u, i=i, s=s, meat=meat, f=f, sweet=sweet, tip=tip, m=m, parts=parts))
+def r(id, n, k, t, reg, u, i, s, meat=None, f=None, sweet=False, tip=None, m=None, parts=2, c="med", o=None):
+    """parts : nombre de parts obtenues (pour les kcal par part) ; les quantités restent prévues pour 2 personnes.
+    c : famille de cuisine (med, asie, orient, inde, ameriques, afrique) ; o : pays ou région d'origine affiché."""
+    R.append(dict(id=id, n=n, k=k, t=t, reg=reg, u=u, i=i, s=s, meat=meat, f=f, sweet=sweet, tip=tip, m=m, parts=parts, c=c, o=o))
 
 # ---------------- Végétarien : plats, soupes, entrées ----------------
 r("veloute-potimarron", "Velouté de potimarron au cumin", "Soupe", 25, "vege", ["Potimarron"], [
@@ -426,3 +427,7 @@ r("veau-printanier", "Escalopes de veau aux asperges", "Plat", 25, "viande", ["A
     (10, "g", "de beurre", "beurre", 10), (1, "c. à soupe", "d'huile d'olive", "huile", 10), S],
     ["Cuire les asperges 6 min à l'eau puis les poêler dans le beurre.", "Saisir les escalopes 2 min de chaque côté dans l'huile.",
      "Déglacer avec le jus de citron.", "Assaisonner et servir avec les asperges."], meat="veau")
+
+
+from recipes_world import add_world
+add_world(r, S)
