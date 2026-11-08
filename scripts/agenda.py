@@ -109,7 +109,7 @@ KEYWORDS = [
     ("expo", r"\bexpo(sition)?s?\b|vernissage|galerie"),
     ("concert", r"concert|r[ée]cital|orchestre|\bjazz\b|chorale|op[ée]ra\b|symphoni|musique"),
     ("spectacle", r"spectacle|th[ée][âa]tre|cirque|danse|humour|one[- ]man|com[ée]die|marionnette|cin[ée]|projection|conte"),
-    ("marche", r"march[ée]|brocante|vide[- ]grenier|braderie|\bsalon\b|foire|puces|chineu"),
+    ("marche", r"march[ée]|brocante|vide[- ]grenier|vide[- ]dressing|braderie|\bsalon\b|foire|puces|chineu|dimanches du peyrou|antiquit|bourse aux"),
     ("sport", r"\bcourse\b|foul[ée]es|trail|marathon|match|tournoi|\brando"),
     ("atelier", r"atelier|stage|conf[ée]rence|initiation|cours de|jeu(x)? de piste|jeune public|agora|rencontre|lecture"),
     ("visite", r"visite|balade|d[ée]couverte|centre historique|patrimoine|histoire|ch[âa]teau|b[âa]timent historique"),
@@ -119,7 +119,7 @@ KEYWORDS = [
 
 def category(classes, title=""):
     key = next((k for k, names in CATS if classes & names), None)
-    if key in (None, "atelier", "fete"):
+    if key in (None, "atelier", "fete", "culture"):
         t = fold(title)
         for k, rx in KEYWORDS:
             if re.search(fold(rx), t):
