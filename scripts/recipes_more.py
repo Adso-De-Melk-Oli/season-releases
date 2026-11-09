@@ -126,3 +126,35 @@ def add_more(r, S):
         (3, "", "kiwi|kiwis", "kiwi", 250), (2, "", "yaourt|yaourts", "yaourt", 250), (40, "g", "de flocons d'avoine", "avoine", 40),
         (1, "c. à soupe", "de miel", "miel", 15), (15, "g", "de noisettes", "noisette", 15)],
         ["Faire griller à sec avoine et noisettes 5 min, ajouter le miel.", "Couper les kiwis en dés.", "Superposer yaourt, kiwis et granola."], sweet=True)
+
+    # ---------- Poissons et fruits de mer ----------
+    r("seiches-plancha", "Seiches à la plancha, persillade et riz", "Plat", 25, "poisson", [], [
+        (400, "g", "de seiches nettoyées", "seiche", 400), (2, "gousse", "d'ail", "ail", 8), (0.5, "botte", "de persil", "herbe", 10),
+        (0.5, "", "citron|citrons", "citron", 30), (1, "c. à soupe", "d'huile d'olive", "huile", 15), (120, "g", "de riz", "riz", 120), S],
+        ["Cuire le riz.", "Inciser les seiches en croisillons, les saisir 2 min par face à feu très vif.",
+         "Ajouter ail et persil hachés hors du feu.", "Servir avec le riz et un trait de citron."], f="Seiche", o="Sète")
+    r("saint-jacques-petits-pois", "Saint-Jacques snackées, crème de petits pois", "Plat", 30, "poisson", ["Petits pois"], [
+        (8, "", "noix de Saint-Jacques|noix de Saint-Jacques", "stjacques", 240), (600, "g", "de petits pois à écosser", "petitspois", 250),
+        (5, "cl", "de crème", "creme", 50), (10, "g", "de beurre", "beurre", 10), (0.5, "botte", "de menthe", "herbe", 5), S],
+        ["Cuire les petits pois 8 min à l'eau, les mixer avec la crème et la menthe.", "Sécher les Saint-Jacques.",
+         "Les saisir 1 min par face dans le beurre très chaud.", "Servir sur la crème de petits pois."], f="Saint-Jacques")
+    r("sardines-escabeche", "Sardines en escabèche", "Entrée", 25, "poisson", [], [
+        (8, "", "sardine|sardines", "sardine", 300), (1, "", "oignon|oignons", "oignon", 100), (1, "", "carotte|carottes", "carotte", 80),
+        (5, "cl", "de vinaigre de vin", "epice", 10), (3, "c. à soupe", "d'huile d'olive", "huile", 30), (1, "", "feuille de laurier|feuilles de laurier", "herbe", 1), S],
+        ["Fariner légèrement les filets de sardine et les dorer 1 min par face.", "Faire revenir oignon et carotte émincés, ajouter vinaigre et laurier.",
+         "Verser chaud sur les sardines.", "Laisser mariner au frais au moins 2 h."], f="Sardine", c="med", o="Espagne")
+    r("encornets-ail-persil", "Encornets sautés à l'ail et au piment d'Espelette", "Plat", 20, "poisson", [], [
+        (400, "g", "d'encornets", "encornet", 400), (2, "gousse", "d'ail", "ail", 8), (0.5, "c. à café", "de piment d'Espelette", "epice", 2),
+        (0.5, "botte", "de persil", "herbe", 10), (1, "c. à soupe", "d'huile d'olive", "huile", 15), (120, "g", "de riz", "riz", 120), S],
+        ["Cuire le riz.", "Couper les encornets en anneaux, les sécher.", "Les saisir 2 min à feu très vif dans l'huile.",
+         "Ajouter ail, piment et persil, servir aussitôt."], f="Encornet", o="Pays basque")
+    r("rougets-papillote", "Rougets en papillote, citron et thym", "Plat", 25, "poisson", [], [
+        (4, "", "filet de rouget|filets de rouget", "rouget", 300), (1, "", "citron|citrons", "citron", 60), (0.5, "botte", "de thym", "herbe", 5),
+        (1, "c. à soupe", "d'huile d'olive", "huile", 15), (300, "g", "de pommes de terre", "pdt", 300), S],
+        ["Préchauffer le four à 200 °C, cuire les pommes de terre à l'eau.", "Déposer les filets sur du papier cuisson avec citron, thym et huile.",
+         "Fermer les papillotes, cuire 12 min.", "Servir avec les pommes de terre."], f="Rouget")
+    r("bar-puree-celeri", "Bar rôti, purée de céleri", "Plat", 40, "poisson", ["Céleri-rave"], [
+        (2, "", "filet de bar|filets de bar", "bar", 300), (0.5, "", "céleri-rave|céleris-raves", "celeri", 400), (10, "cl", "de lait", "lait", 100),
+        (15, "g", "de beurre", "beurre", 15), (1, "c. à soupe", "d'huile d'olive", "huile", 10), (0.5, "", "citron|citrons", "citron", 30), S],
+        ["Cuire le céleri en morceaux 20 min dans le lait et un peu d'eau.", "Le mixer avec le beurre.",
+         "Rôtir le bar côté peau 4 min à la poêle, puis 1 min de l'autre côté.", "Servir sur la purée avec un trait de citron."], f="Bar")
