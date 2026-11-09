@@ -431,3 +431,5 @@ r("veau-printanier", "Escalopes de veau aux asperges", "Plat", 25, "viande", ["A
 
 from recipes_world import add_world
 add_world(r, S)
+from recipes_more import add_more
+add_more(r, S)

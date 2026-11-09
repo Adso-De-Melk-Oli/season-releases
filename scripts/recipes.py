@@ -20,6 +20,7 @@ KCAL = dict(
     chocolat=550, rhubarbe=20, pasteque=30, raisin=70, fromageblanc=75, kiwi=60,
     soja=60, nuocmam=35, miso=200, tofu=120, galette_riz=360, semoule=360, navet=20, boulgour=350, tahini=600, pruneau=240, pain=270,
     raisin_sec=300, mais=90, tortilla=300, arachide=600, chou=30, mascarpone=430, biscuit=400, framboise=45, prune=50, kaki=70,
+    mache=20, topinambour=75, salsifis=80, cassis=60, myrtille=55, mure=45, mirabelle=60, laitue=15, pamplemousse=40, avoine=380, avocat=160,
 )
 # Aliments salés et leur remplacement en mode « sans sel ajouté » (None = la recette n'est pas proposée)
 SALTY = {"bouillon": "de bouillon de légumes sans sel ajouté", "olive": None, "saucisse": None, "confit": None, "roquefort": "de chèvre frais",
@@ -91,7 +92,7 @@ def build(season_json, out):
         })
     ids = [r["id"] for r in recipes]; assert len(ids) == len(set(ids)), "identifiants en double"
     fish = {str(m): [FISH_LABEL[k] for k, ms in FISH.items() if m in ms] for m in range(1, 13)}
-    data = {"v": 1, "recipes": recipes, "fish": fish}
+    data = {"v": 1, "recipes": recipes, "fish": fish, "alias": {k: v for k, v in ALIAS.items() if len(v) > 1}}
     json.dump(data, open(out, "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
     return recipes
 
