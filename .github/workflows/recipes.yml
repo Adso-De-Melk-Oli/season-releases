@@ -4,7 +4,7 @@ name: Recettes de saison
 on:
   push:
     branches: [main]
-    paths: ["scripts/recipes.py", "scripts/recipes_data.py", "scripts/produce.json", ".github/workflows/recipes.yml"]
+    paths: ["scripts/recipes.py", "scripts/recipes_data.py", "scripts/recipes_world.py", "scripts/produce.json", ".github/workflows/recipes.yml"]
   workflow_dispatch:
 
 permissions:
